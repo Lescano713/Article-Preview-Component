@@ -42,20 +42,23 @@
 - Flexbox
 - CSS Grid
 - mobile-first workflow
+- javaScript
 
 
 ### What I learned
 
-<p>I learned about the different properties of <code>background-image</code></p>
-
+<p>I learned how to create a pseudo element and position it</p>
 
 ```css
-  .daniel-clifford{
-    grid-column: auto / span 2;
-    background-image: url('./images/bg-pattern-quotation.svg');
-    background-repeat: no-repeat;
-    background-position: 90% 10%;
-  }
+  .social-media::after{
+        content: "";
+        width: 25px;
+        height: 25px;
+        background-color: var(--VeryDarkGrayishBlue);
+        position: absolute;
+        top: 74%;
+        transform: rotate(45deg);
+    }
 ```
 <p>I also implemented media queries and grid columns and rows to make the cards responsive on different devices.</p>
 
@@ -75,41 +78,29 @@
     }
 
 ```
-<p>I created a Json file to facilitate data entry, dividing the data by studentName, rol, studentImage, resume, testimonial, color, and colorFont. I used colorFont to apply a font color according to each student, which helped me to reduce the amount of CSS needed</p>
-
-```json
- {
-    "studentName" : "Jeanette Harmon",
-    "rol": "Verified Graduate",
-    "studentImage" : "./images/image-jeanette.jpg",
-    "resume":"An overall wonderful and rewarding experience",
-    "testimonial": "Thank you for the wonderful experience! I now have a job I really enjoy, and make a good living while doing something I love." ,
-    "color": "hsl(0, 0%, 100%)",
-    "colorFont" : "black"
- },
-```
-```js
-        let section = document.createElement("section");
-        section.style.backgroundColor = element.color;
-        section.style.color = element.colorFont;
-        main.appendChild(section);
-```
-
-<p>To bring the data from the JSON file, I used the Fetch API and created a function that retrieves the data and creates the respective elements</p>
+<p>I created an array to facilitate data entry, which helped me to reduce the amount of HTML needed</p>
 
 ```js
-  function getElements(callback){
-      fetch('data.json')
-          .then(response => response.json())
-          .then(data =>callback(data.testimonials))
-  }
+ const articles = [{
+    imageAuthor: './images/avatar-michelle.jpg',
+    author: 'Michelle Appleton',
+    date: '28 Jun 2020',
+    imageArticle: './images/drawers.jpg',
+    title: 'Shift the Overall Look and Feel by Adding These Wonderful Touches to Furniture in Your Home',
+    introduction: 'Ever been in a room and felt like something was missing? Perhaps it felt slightly bare and uninviting. I’ve got some simple tips to help you make any room feel complete.',
+    facebook: '#',
+    twitter: '#',
+    pinterest: '#',
+}]
 ```
+
+
 <p>Then, I created a function that adds the elements to the DOM from the retrieved data.</p>
 
 ```js
- function createCards (){
+ function uploadingArticles (){
     main.innerHTML = "";
-    features.forEach(feature =>{
+    articles.forEach(article =>{
       //html elements
       })
     }
