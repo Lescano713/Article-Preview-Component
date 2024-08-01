@@ -21,6 +21,7 @@ uploadingArticles()
 
 function uploadingArticles(){
     articles.forEach(article =>{
+        articleContainer.innerHTML = "";
         articleContainer.innerHTML = `
             <div class="img-container">
                 <img class="article-img" src="${article.imageArticle}" alt="article-img">
@@ -47,9 +48,10 @@ function uploadingArticles(){
             shareI.classList.add("fa-share")
             shareI.id = "share-author";
             authorDiv.appendChild(shareI);
-
+            authorDiv.id = "author-container";
             const socialMediaDiv = document.createElement('div');
             socialMediaDiv.classList.add('social-media');
+            socialMediaDiv.id = "social-div"
             socialMediaDiv.innerHTML = ` 
                     <h2>SHARE</h2>
                     <a href="${article.facebook}" ><img src="./images/icon-facebook.svg" alt="image-author"></a>
@@ -61,38 +63,26 @@ function uploadingArticles(){
             infoContainer.appendChild(socialMediaDiv);
             articleContainer.appendChild(infoContainer);
 
-            const ShareSocialI = document.createElement('i');
-                    ShareSocialI.classList.add("fa-solid");
-                    ShareSocialI.classList.add("fa-share");
-                    ShareSocialI.id ="share-icon";
-                    socialMediaDiv.appendChild(ShareSocialI);
+            // const ShareSocialI = document.createElement('i');
+            //         ShareSocialI.classList.add("fa-solid");
+            //         ShareSocialI.classList.add("fa-share");
+            //         ShareSocialI.id ="share-icon";
+            //         socialMediaDiv.appendChild(ShareSocialI);
 
-            showHide(shareI,ShareSocialI,socialMediaDiv, authorDiv);
+            // showHide(shareI,ShareSocialI,socialMediaDiv, authorDiv);
             
     })
 }
 
-const socialShare = document.getElementById("share-social");
 const authorShare = document.getElementById("share-author");
-function showHide(icon1, icon2, div1, div2){
-    icon1.addEventListener('click', show);
-    function show(){
-        if(window.innerWidth >= 800){
-            div1.classList.toggle("show");
-            div2.classList.remove("hide")
-            icon2.style.display = "none";
-        }else{
-            div2.classList.toggle("hide");
-            div1.classList.toggle("show");
-            icon2.classList.add("show")
-            
-            icon2.addEventListener('click', e=>{
-                div2.classList.remove("hide");
-                div1.classList.remove("show");
-            })
-        }
-    }
-}
+const socialMediaDiv = document.getElementById("social-div");
+
+
+authorShare.addEventListener('click', e =>{
+    socialMediaDiv.classList.toggle("show");
+})
+
+
 
 
 
