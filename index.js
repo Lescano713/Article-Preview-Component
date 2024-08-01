@@ -37,7 +37,7 @@ function uploadingArticles(){
             const authorDiv = document.createElement('div');
             authorDiv.classList.add('author-container');
             authorDiv.innerHTML += `
-                    <img class="img-author" src="${article.imageAuthor}">
+                    <img class="img-author" src="${article.imageAuthor}" alt="img-author">
                     <div class="author">
                     <h1>${article.author}</h1>
                     <p>${article.date}</p>
@@ -56,26 +56,39 @@ function uploadingArticles(){
                     <a href="${article.twitter}" ><img src="./images/icon-twitter.svg" alt="image-author"></a>
                     <a href="${article.pinterest}" ><img src="./images/icon-pinterest.svg" alt="image-author"></a>
             `;
-            const ShareSocialI = document.createElement('i');
-            ShareSocialI.classList.add("fa-solid");
-            ShareSocialI.classList.add("fa-share");
-            ShareSocialI.id ="share-icon" ;
-            socialMediaDiv.appendChild(ShareSocialI);
 
             infoContainer.appendChild(authorDiv);
             infoContainer.appendChild(socialMediaDiv);
             articleContainer.appendChild(infoContainer);
 
-            shareI.addEventListener('click', e =>{
-                if(window.innerWidth >= 800){
-                    socialMediaDiv.classList.toggle("show");
-                }else{
-                    authorDiv.classList.toggle("hide");
-                    socialMediaDiv.classList.toggle("show");
-                }
-            });
+            const ShareSocialI = document.createElement('i');
+                    ShareSocialI.classList.add("fa-solid");
+                    ShareSocialI.classList.add("fa-share");
+                    ShareSocialI.id ="share-icon";
+                    socialMediaDiv.appendChild(ShareSocialI);
+
+            showHide(shareI,ShareSocialI,socialMediaDiv, authorDiv);
             
     })
+}
+function showHide(icon1, icon2, div1, div2){
+    icon1.addEventListener('click', show);
+    function show(){
+        if(window.innerWidth >= 800){
+            div1.classList.toggle("show");
+            div2.classList.remove("hide")
+            icon2.style.display = "none";
+        }else{
+            div2.classList.toggle("hide");
+            div1.classList.toggle("show");
+            icon2.classList.add("show")
+            
+            icon2.addEventListener('click', e=>{
+                div2.classList.remove("hide");
+                div1.classList.remove("show");
+            })
+        }
+    }
 }
 
 
