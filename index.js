@@ -71,6 +71,9 @@ function uploadingArticles(){
             
     })
 }
+
+const socialShare = document.getElementById("share-social");
+const authorShare = document.getElementById("share-author");
 function showHide(icon1, icon2, div1, div2){
     icon1.addEventListener('click', show);
     function show(){
