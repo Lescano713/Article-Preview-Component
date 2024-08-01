@@ -1,7 +1,3 @@
-// const shareAuthor = document.getElementById("share-author");
-// const shareSocial = document.getElementById("share-social")
-// const divSocialMedia = document.getElementById("social-media");
-// const divAuthor = document.getElementById("author-container");
 const articleContainer = document.getElementById("article")
 
 const articles = [{
@@ -62,21 +58,12 @@ function uploadingArticles(){
             infoContainer.appendChild(authorDiv);
             infoContainer.appendChild(socialMediaDiv);
             articleContainer.appendChild(infoContainer);
-
-            // const ShareSocialI = document.createElement('i');
-            //         ShareSocialI.classList.add("fa-solid");
-            //         ShareSocialI.classList.add("fa-share");
-            //         ShareSocialI.id ="share-icon";
-            //         socialMediaDiv.appendChild(ShareSocialI);
-
-            // showHide(shareI,ShareSocialI,socialMediaDiv, authorDiv);
             
     })
 }
 
 const authorShare = document.getElementById("share-author");
 const socialMediaDiv = document.getElementById("social-div");
-
 
 authorShare.addEventListener('click', e =>{
     socialMediaDiv.classList.toggle("show");

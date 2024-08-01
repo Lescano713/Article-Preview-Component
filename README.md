@@ -47,7 +47,7 @@
 
 ### What I learned
 
-<p>I learned how to create a pseudo element and position it</p>
+<p>I learned how to create a pseudo element and position it:</p>
 
 ```css
   .social-media::after{
@@ -60,25 +60,22 @@
         transform: rotate(45deg);
     }
 ```
-<p>I also implemented media queries and grid columns and rows to make the cards responsive on different devices.</p>
+<p>I also implemented media queries and flexbox to convert columns into rows, making the article more responsive on larger screen sizes:</p>
 
 
 ```css
-    @media (max-width: 1000px) {
-        main{
-            grid-template-columns: repeat(auto-fit ,minmax(14em,1fr));
-            padding: 1.3em 1em ;
-        }
-    }
-    
-    @media (max-width: 550px){
-      .jeanette-harmon, .jonathan-walters, .kira-whittle{
-        grid-column: span 2;
+    @media (min-width:850px){
+      article{
+          flex-direction: row;
+          max-width: 42em;
+          overflow: visible;
+          .info-container{
+              padding: 0.5em;
+          }
       }
     }
-
 ```
-<p>I created an array to facilitate data entry, which helped me to reduce the amount of HTML needed</p>
+<p>I created an array to facilitate data entry, which helped me reduce the amount of HTML needed:</p>
 
 ```js
  const articles = [{
@@ -95,7 +92,7 @@
 ```
 
 
-<p>Then, I created a function that adds the elements to the DOM from the retrieved data.</p>
+<p>Then, I created a function that adds the elements to the DOM from the retrieved data:</p>
 
 ```js
  function uploadingArticles (){
@@ -105,6 +102,27 @@
       })
     }
 ```
+
+<p>Here’s how I handled event listeners to detect user clicks and apply additional styles to the button:</p>
+
+```js
+    const authorShare = document.getElementById("share-author");
+    const socialMediaDiv = document.getElementById("social-div");
+
+
+    authorShare.addEventListener('click', e =>{
+        socialMediaDiv.classList.toggle("show");
+    })
+```
+```css
+  .show{
+      opacity: 1;
+      bottom: 0;
+      transition: all .3s ease-in-out;
+  }
+
+```
+
 
 
 
